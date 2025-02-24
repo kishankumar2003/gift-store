@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> caratlane - A TATA Product | Best Store for Online Jewellery Shopping</title>
+    <link rel="icon" type="image/png" href="caratlanelogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="caratlanelogo.png" alt="caratlane Logo">
+        </div>
+        <nav>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#collection" class="nav-link">Collection</a>
+                <a href="#offers" class="nav-link">Offers</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Search Relationship">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="pincode-box">
+                    <span>Delivery & Stores</span>
+                    <a href="#" class="pincode-link">Enter Pincode</a>
+                </div>
+                <div class="nav-icons">
+                    <a href="#" class="flag-icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" alt="Indian Flag">
+                    </a>
+                    <a href="#" class="user-icon">
+                        <i class="fas fa-user"></i>
+                        <div class="user-popup">
+                            <h2>Your Account</h2>
+                            <p>Access account & manage your orders.</p>
+                            <div class="user-popup-buttons">
+                                <button href="https://www.caratlane.com/register" class="signup-btn">Sign Up</button>
+                                <button href="https://www.caratlane.com/login" class="login-btn">Log In</button>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="wishlist-icon">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                    <div class="cart-icon" onclick="openCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cartBadge" class="cart-badge">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Claim Your Reward</h1>
+            <h2>Rewards and Recognition Programme</h2>
+            <p>Let's celebrate the achievement together !!</p>
+            <button class="cta-button" onclick="document.getElementById('collection').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <p>Days</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <p>Minutes</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection">
+        <h2>Gift Store</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://th.bing.com/th/id/OIP.axSbGyIb-pw1Vcu-vdc0IwHaHa?rs=1&pid=ImgDetMain" alt="Boat Airdopes">
+                    <span class="discount">-40%</span>
+                </div>
+                <div class="product-info">
+                    <h3>boAt Airdopes 171 TWS Earbuds</h3>
+                    <p class="price">₹1,499</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'boAt Airdopes 171', price: 1499, image: 'https://rukminim2.flixcart.com/image/416/416/xif0q/headphone/j/t/c/-original-imaghbwypzgj4gj9.jpeg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71zDU8JBLZL._SX679_.jpg" alt="JBL Speaker">
+                    <span class="discount">-35%</span>
+                </div>
+                <div class="product-info">
+                    <h3>JBL Go Essential Speaker</h3>
+                    <p class="price">₹1,999</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'JBL Go Essential', price: 1999, image: 'https://rukminim2.flixcart.com/image/416/416/xif0q/speaker/mobile-tablet-speaker/m/1/h/-original-imagkfdfghvch8rw.jpeg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/51xuWoOZDPL._SY695_.jpg" alt="Nike Air Force">
+                    <span class="discount">-30%</span>
+                </div>
+                <div class="product-info">
+                    <h3>Nike Air Force 1</h3>
+                    <p class="price">₹2,099</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'Nike Air Force 1', price: 2099, image: 'https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/m/m/v/-original-imagg7t5f6gpryy9.jpeg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/51fNtbT-GgL._SY695_.jpg" alt="Nike Revolution">
+                    <span class="discount">-25%</span>
+                </div>
+                <div class="product-info">
+                    <h3>Nike Revolution 6</h3>
+                    <p class="price">₹1,999</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'Nike Revolution 6', price: 1999, image: 'https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/c/f/p/-original-imagg7t5bdjjzh8z.jpeg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/7168qqiRjiL._SX522_.jpg" alt="Skincare Set">
+                    <span class="discount">-25%</span>
+                </div>
+                <div class="product-info">
+                    <h3>Nykaa Skincare Gift Set</h3>
+                    <p class="price">₹1,899</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'Nykaa Skincare Gift Set', price: 1899, image: 'https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/2/4/24e8d07nykac00000187_1.jpg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1696470800-1591136644-7ef2a988-17eb-4b12-9909-bcd8e382302d-651e170321a08.jpg?crop=1xw:1xh;center,top&resize=980:*" alt="Face Serum">
+                    <span class="discount">-20%</span>
+                </div>
+                <div class="product-info">
+                    <h3>CREED Les Royales Exclusives Jardin dAmalfi Fragrance</h3>
+                    <p class="price">₹1,599</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'Dot & Key Vitamin C Serum', price: 1599, image: 'https://images-static.nykaa.com/media/catalog/product/tr:w-220,h-220,cm-pad_resize/d/k/dkherbals_vitc_1.jpg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/11ns-uPaOxL.jpg" alt="Westside Gift Card">
+                    <span class="discount">-20%</span>
+                </div>
+                <div class="product-info">
+                    <h3>Westside Gift Voucher</h3>
+                    <p class="price">₹1,999</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'Westside Gift Voucher', price: 1999, image: 'https://cdn.shopify.com/s/files/1/0266/1371/2366/products/WestsideGiftCard_1_1800x1800.jpg'})">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/G/31/gc/designs/livepreview/a_generic_grey_in_noto_email_in-main._CB485966108_.png" alt="Amazon Gift Card">
+                    <span class="discount">-10%</span>
+                </div>
+                <div class="product-info">
+                    <h3>Amazon Gift Card</h3>
+                    <p class="price">₹1,800</p>
+                    <button class="add-to-cart" onclick="addToCart({name: 'Amazon Gift Card', price: 1800, image: 'https://m.media-amazon.com/images/G/31/social_share/amazon_gift_card_email._CB485916580_.png'})">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="newsletter">
+            <h2>Get Special Offers</h2>
+            <p>Subscribe to our newsletter and get exclusive Offers Day deals!</p>
+            <form id="subscribe-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +1 877-234-5618</p>
+                <p><i class="fas fa-envelope"></i> contactus@caratlane.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/caratlane"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/caratlane/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.pinterest.com/caratlane/"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright caratlane &copy; 2023. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="cart-overlay"></div>
+    <div class="cart-modal">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>₹<span id="cart-total-amount">0</span></span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
