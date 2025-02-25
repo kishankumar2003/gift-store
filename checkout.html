@@ -65,24 +65,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group payment-method">
-                        <label class="payment-label">
-                            <i class="fas fa-money-bill-wave"></i> Payment Method
-                        </label>
-                        <div class="payment-options">
-                            <label class="payment-option">
-                                <input type="radio" name="paymentMethod" value="cod" checked>
-                                <span class="payment-option-content">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                    <div class="payment-text">
-                                        <span>Cash on Delivery</span>
-                                        <small>Pay when you receive</small>
-                                    </div>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-
                     <button type="submit" class="place-order-btn">
                         <i class="fas fa-check-circle"></i> Place Order
                     </button>
@@ -101,14 +83,6 @@
                         <span>Subtotal</span>
                         <span class="amount">₹0</span>
                     </div>
-                    <div class="shipping">
-                        <span>Shipping</span>
-                        <span class="amount">Free</span>
-                    </div>
-                    <div class="cod-fee">
-                        <span>COD Fee</span>
-                        <span class="amount">₹10</span>
-                    </div>
                     <div class="total">
                         <span>Total</span>
                         <span id="orderTotal" class="amount">₹0</span>
@@ -121,7 +95,6 @@
     <div id="notification" class="notification"></div>
 
     <script>
-        const COD_FEE = 10;
         // Load cart items from localStorage
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
         const orderItems = document.querySelector('.order-items');
@@ -148,9 +121,8 @@
             });
 
             // Update totals
-            const total = subtotal + COD_FEE;
             subtotalAmount.textContent = `₹${subtotal.toLocaleString()}`;
-            orderTotal.textContent = `₹${total.toLocaleString()}`;
+            orderTotal.textContent = `₹${subtotal.toLocaleString()}`;
         }
 
         // Initialize order display
@@ -167,7 +139,6 @@
             submitButton.disabled = true;
 
             const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const total = subtotal + COD_FEE;
 
             const formData = {
                 fullName: document.getElementById('fullName').value,
@@ -178,8 +149,7 @@
                 pincode: document.getElementById('pincode').value,
                 items: cart.map(item => item.name).join(', '),
                 subtotal: subtotal,
-                codFee: COD_FEE,
-                total: total,
+                total: subtotal,
                 paymentMethod: 'Cash on Delivery',
                 orderDate: new Date().toISOString()
             };
@@ -222,9 +192,7 @@
                                 <div class="detail-item">
                                     <i class="fas fa-rupee-sign"></i>
                                     <div class="price-breakdown">
-                                        <div>Subtotal: ₹${formData.subtotal.toLocaleString()}</div>
-                                        <div>COD Fee: ₹${formData.codFee}</div>
-                                        <div class="total-amount">Total: ₹${formData.total.toLocaleString()}</div>
+                                        <div>Total Amount: ₹${formData.total.toLocaleString()}</div>
                                     </div>
                                 </div>
                             </div>

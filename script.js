@@ -65,9 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const productCard = event.target.closest('.product-card');
         const image = productCard.querySelector('img').src;
         
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ name, price, image });
-        localStorage.setItem('cart', JSON.stringify(cart));
+        // Clear existing cart before adding new item
+        localStorage.setItem('cart', JSON.stringify([{ name, price, image }]));
         
         updateCartCount();
         updateCartDisplay();
@@ -76,10 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Make removeFromCart function global
     window.removeFromCart = function(index) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
+        localStorage.setItem('cart', JSON.stringify([]));
         updateCartCount();
         updateCartDisplay();
         showNotification('Item removed from cart!');
@@ -89,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartItems = document.querySelector('.cart-items');
         const totalElement = document.getElementById('cart-total-amount');
+        const checkoutBtn = document.querySelector('.checkout-btn');
         
         // Clear current cart display
         cartItems.innerHTML = '';
@@ -96,29 +93,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart.length === 0) {
             cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
             totalElement.textContent = '0';
+            if (checkoutBtn) {
+                checkoutBtn.style.display = 'none';
+            }
             return;
         }
 
-        // Calculate total and display items
-        let total = 0;
-        cart.forEach((item, index) => {
-            total += item.price;
-            
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
-            cartItem.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <div class="cart-item-details">
-                    <h4>${item.name}</h4>
-                    <div class="cart-item-price">₹${item.price.toLocaleString()}</div>
-                </div>
-                <button class="remove-item" onclick="removeFromCart(${index})">&times;</button>
-            `;
-            cartItems.appendChild(cartItem);
-        });
-
+        // Display the single item
+        const item = cart[0];
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        itemElement.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <p class="cart-item-price">₹${item.price.toLocaleString()}</p>
+            </div>
+            <button onclick="removeFromCart(0)" class="remove-item">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        cartItems.appendChild(itemElement);
+        
         // Update total
-        totalElement.textContent = total.toLocaleString();
+        totalElement.textContent = item.price.toLocaleString();
+        
+        // Show checkout button
+        if (checkoutBtn) {
+            checkoutBtn.style.display = 'block';
+        }
     }
 
     function updateCartCount() {
